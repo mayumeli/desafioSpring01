@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class ProductService implements IProduct {
@@ -20,5 +21,10 @@ public class ProductService implements IProduct {
         int id = repository.getAll().size();
         product.setProductId(id + 1);
         return new ProductDto(repository.saveProduct(product));
+    }
+
+    @Override
+    public List<Product> getAll() {
+        return repository.getAll();
     }
 }
