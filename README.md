@@ -23,7 +23,7 @@ requisição feita pode ser recebido como resposta.
 - Leve em consideração, para cada uma dessas solicitações, os possíveis
 "status code" que podem ser retornados.
 - Por exemplo:
-  - Se um produto que não existe for solicitado, retorne o código de
+  - Se um product que não existe for solicitado, retorne o código de
   status correspondente.
   - Se houver um problema com o servidor e a conexão não puder ser
   feita, o código de status correspondente deve ser retornado.
@@ -34,11 +34,11 @@ requisição feita pode ser recebido como resposta.
 
 ### A plataforma afirmou que no futuro gostaria de ser capaz de realizar o desenvolvimentodos seguintes requisitos como uma melhoria:
 
-#### 9. Para cada solicitação de compra é necessário realizar o controle de estoquedisponível. Por exemplo: Se forem solicitadas 4 unidades de um produto e houverapenas duas, coloque as restrições e avisos correspondentes.
+#### 9. Para cada solicitação de compra é necessário realizar o controle de estoquedisponível. Por exemplo: Se forem solicitadas 4 unidades de um product e houverapenas duas, coloque as restrições e avisos correspondentes.
 
 #### 10. Permite a utilização de um “carrinho de compras” onde para cada pedido decompra existe um valor total acumulado e devolvido ao utilizador.
 - Por exemplo: Se
-  um produto de R$ 900 foi enviado em um pedido de compra e outro produto de
+  um product de R$ 900 foi enviado em um pedido de compra e outro product de
   R$ 300 foi enviado em outro, devo receber a soma dos dois (R$ 1200) como
   resposta.
 

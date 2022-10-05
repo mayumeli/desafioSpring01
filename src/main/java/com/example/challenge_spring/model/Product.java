@@ -1,8 +1,16 @@
 package com.example.challenge_spring.model;
 
-public class Produto {
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-    private int produtcId;
+@Getter
+@Setter
+@NoArgsConstructor
+public class Product {
+
+    private int productId;
     private String name;
     private String category;
     private String brand;
@@ -11,8 +19,7 @@ public class Produto {
     private boolean freeShipping;
     private String prestige;
 
-    public Produto(int produtcId, String name, String category, String brand, double price, int quantity, boolean freeShipping, String prestige) {
-        this.produtcId = produtcId;
+    public Product(String name, String category, String brand, double price, int quantity, boolean freeShipping, String prestige) {
         this.name = name;
         this.category = category;
         this.brand = brand;
