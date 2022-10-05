@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService implements IProduct {
@@ -26,5 +27,14 @@ public class ProductService implements IProduct {
     @Override
     public List<Product> getAll() {
         return repository.getAll();
+    }
+
+    @Override
+    public List<Product> getAllByCategory(String category) {
+        List<Product> products = getAll();
+
+        return products.stream()
+                .filter(product -> product.getCategory().equalsIgnoreCase(category))
+                .collect(Collectors.toList());
     }
 }

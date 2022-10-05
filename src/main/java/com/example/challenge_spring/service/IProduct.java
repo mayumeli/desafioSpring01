@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface IProduct {
     ProductDto createProduct(Product product) throws IOException;
+    List<Product> getAllByCategory(String category);
 
     List<Product> getAll();
 }
