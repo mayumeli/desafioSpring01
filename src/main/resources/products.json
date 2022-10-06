@@ -115,4 +115,22 @@
   "quantity" : 10,
   "freeShipping" : true,
   "prestige" : "****"
+}, {
+  "productId" : 14,
+  "name" : "preguinho",
+  "category" : "Ferramentas",
+  "brand" : "Black & Decker",
+  "price" : 2.0,
+  "quantity" : 13,
+  "freeShipping" : true,
+  "prestige" : "****"
+}, {
+  "productId" : 15,
+  "name" : "tijolo",
+  "category" : "Ferramentas",
+  "brand" : "Black & Decker",
+  "price" : 2.0,
+  "quantity" : 1,
+  "freeShipping" : true,
+  "prestige" : "****"
 } ]

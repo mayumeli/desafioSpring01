@@ -20,9 +20,9 @@ public class ProductController {
     private IProduct service;
 
     @PostMapping("/insert-articles-request")
-    public ResponseEntity<ProductDto> createProduct(@RequestBody Product product) throws IOException {
-        System.out.println(product);
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.createProduct(product));
+    public ResponseEntity<List<ProductDto>> createProduct(@RequestBody List<Product> products) throws IOException {
+        System.out.println(products);
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.createProduct(products));
     }
 
     @GetMapping(value = "/articles")
