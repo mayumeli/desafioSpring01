@@ -8,6 +8,7 @@ public class ProductOrder {
         if (order == 0) return alphabeticalOrder(p1, p2);
         if (order == 1) return alphabeticalOrder(p2, p1);
         if (order == 2) return valueOrder(p2, p1);
+        if (order == 3) return valueOrder(p1, p2);
         return 0;
     }
 
