@@ -18,14 +18,21 @@ public class ProductService implements IProduct {
     private ProductRepo repository;
 
     @Override
-    public List<ProductDto> createProduct(List<Product> products) throws IOException {
+    public ProductDto createProduct(Product product) throws IOException {
+        int id = repository.getAll().size();
+        product.setProductId(id + 1);
+        return new ProductDto(repository.saveProduct(product));
+    }
+
+    @Override
+    public List<ProductDto> createProducts(List<Product> products) throws IOException {
         int id = repository.getAll().size();
         for(Product product : products){  // for each
             product.setProductId(++id); // interando produto a produto e setando o Id um por um
         }
         //Pega a lista retornada pelo repository apos salvar, e transforma em uma lista de ProductDto
         // map pega a lsita de produtos um por um e por metodo por referencia transforma em Product DTO
-        return repository.saveProduct(products).stream().map(ProductDto::new).collect(Collectors.toList());
+        return repository.saveProducts(products).stream().map(ProductDto::new).collect(Collectors.toList());
 
     }
 

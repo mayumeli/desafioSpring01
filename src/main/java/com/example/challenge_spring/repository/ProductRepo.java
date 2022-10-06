@@ -18,7 +18,19 @@ public class ProductRepo {
     ObjectMapper mapper = new ObjectMapper();
     ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
 
-    public List<Product> saveProduct(List<Product> newProducts) throws IOException { // newProduct é lista de novos produtos a serem cadastrados
+    public Product saveProduct(Product product) throws IOException {
+        List<Product> products = getAll();
+        products = new ArrayList<>(products);
+        products.add(product);
+        try{
+            writer.writeValue(new File(linkFile), products);
+        } catch (IOException e){
+            throw new IOException("Falha ao acessar o arquivo");
+        }
+        return product;
+    }
+
+    public List<Product> saveProducts(List<Product> newProducts) throws IOException { // newProduct é lista de novos produtos a serem cadastrados
         List<Product> products = getAll();
         products = new ArrayList<>(products);
         products.addAll(newProducts); // Salvando uma lista de novos produtos dentro da lista que ja existe
