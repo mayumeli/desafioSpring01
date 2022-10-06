@@ -58,4 +58,14 @@ public class ProductService implements IProduct {
                 .filter(product -> product.isFreeShipping() == freeShipping)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<Product> getAllByShippingAndPrestige(boolean freeShipping, String prestige) {
+        List<Product> products = getAll();
+
+        return products.stream()
+                .filter(product -> product.isFreeShipping() == freeShipping &&
+                        product.getPrestige().equals(prestige))
+                .collect(Collectors.toList());
+    }
 }

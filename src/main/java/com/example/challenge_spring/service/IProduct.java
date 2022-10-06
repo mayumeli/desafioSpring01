@@ -12,4 +12,5 @@ public interface IProduct {
     List<Product> getAll();
     List<Product> getAllByCategory(String category);
     List<Product> getAllByCategoryAndShipping(String category, boolean freeShipping);
+    List<Product> getAllByShippingAndPrestige(boolean freeShipping, String prestige);
 }
