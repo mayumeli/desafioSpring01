@@ -49,4 +49,13 @@ public class ProductService implements IProduct {
                 .filter(product -> product.getCategory().equalsIgnoreCase(category))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<Product> getAllByCategoryAndShipping(String category, boolean freeShipping) {
+        List<Product> productsByCategory = getAllByCategory(category);
+
+        return productsByCategory.stream()
+                .filter(product -> product.isFreeShipping() == freeShipping)
+                .collect(Collectors.toList());
+    }
 }
