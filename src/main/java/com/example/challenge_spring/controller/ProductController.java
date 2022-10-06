@@ -19,10 +19,16 @@ public class ProductController {
     @Autowired
     private IProduct service;
 
-    @PostMapping("/insert-articles-request")
+    @PostMapping("/insert-article-request")
     public ResponseEntity<ProductDto> createProduct(@RequestBody Product product) throws IOException {
         System.out.println(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(service.createProduct(product));
+    }
+
+    @PostMapping("/insert-articles-request")
+    public ResponseEntity<List<ProductDto>> createProducts(@RequestBody List<Product> products) throws IOException {
+        System.out.println(products);
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.createProducts(products));
     }
 
     @GetMapping(value = "/articles")
