@@ -40,4 +40,9 @@ public class ProductController {
     public ResponseEntity<List<Product>> getAll(@RequestParam String category) {
         return ResponseEntity.status(HttpStatus.OK).body(service.getAllByCategory(category));
     }
+
+    @GetMapping(value = "/articles", params = { "category", "freeShipping" })
+    public ResponseEntity<List<Product>> getAll(@RequestParam String category, @RequestParam boolean freeShipping) {
+        return ResponseEntity.status(HttpStatus.OK).body(service.getAllByCategoryAndShipping(category, freeShipping));
+    }
 }
