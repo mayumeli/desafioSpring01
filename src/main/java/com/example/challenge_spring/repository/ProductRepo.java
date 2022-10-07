@@ -18,6 +18,7 @@ public class ProductRepo {
     ObjectMapper mapper = new ObjectMapper();
     ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
 
+    // Método que acessa a lista, mapeia os produtos e adiciona um produto a lista.
     public Product saveProduct(Product product) throws IOException {
         List<Product> products = getAll();
         products = new ArrayList<>(products);
@@ -41,6 +42,8 @@ public class ProductRepo {
         }
         return newProducts;
     }
+
+    // Método que retorna a lista de produtos do arquivo.json
     public List<Product> getAll(){
         List<Product> products = null;
         try {
