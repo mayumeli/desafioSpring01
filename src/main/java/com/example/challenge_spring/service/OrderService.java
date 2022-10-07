@@ -21,12 +21,18 @@ public class OrderService implements IOrder{
 
     @Override
     public Ticket createPurchase(OrderDto order) {
+        
+        // Buscando produtos e armazenando em lista
         List<Product> products = repository.getAll();
-
+        
+        // Transformando lista de produtos em HashMap
         Map<Integer, Product> mapProducts = products.stream().collect(Collectors.toMap(Product::getProductId, product -> product));
-
+ 
         Ticket ticket = new Ticket();
 
+        /*  
+            ProductsRequest representa lista de produtos que a API irá responder para o usuário, a partir daí percorremos os produtos enviados, a fim de popular o nosso objeto de resposta Ticket com os dados do nosso arquivo.  
+        */
         List<Product> productsRequest = new ArrayList<>();
         order.getArticlesPurchaseRequest().stream().forEach(p -> {
             Product currentProduct = mapProducts.get(p.getProductId());
