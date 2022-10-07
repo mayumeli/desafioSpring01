@@ -42,7 +42,7 @@ public class OrderService implements IOrder{
         });
 
         ticket.setArticles(productsRequest);
-        ticket.setId((int)Math.random() * 100);
+        ticket.setId((int)(Math.random() * 100));
         
         return ticket;
     }
