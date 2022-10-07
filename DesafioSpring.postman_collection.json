@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "b21dc675-ac0b-41c3-908f-a0f2daa999eb",
+		"name": "DesafioSpring",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productId\": 89,\n    \"name\": \"parafuso\",\n    \"category\": \"Ferramentas\",\n    \"brand\": \"Black & Decker\",\n    \"price\": 1,\n    \"quantity\": 7,\n    \"freeShipping\": true,\n    \"prestige\": \"****\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}/api/v1/insert-article-request",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"insert-article-request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createProducts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n\n    \"name\": \"pia\",\n    \"category\": \"Ferramentas\",\n    \"brand\": \"Black & Decker\",\n    \"price\": 10,\n    \"quantity\": 3,\n    \"freeShipping\": true,\n    \"prestige\": \"****\"\n     },\n      {\n\n    \"name\": \"madeira\",\n    \"category\": \"Ferramentas\",\n    \"brand\": \"Morumbi\",\n    \"price\": 2,\n    \"quantity\": 6,\n    \"freeShipping\": true,\n    \"prestige\": \"****\"\n     }\n  ]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}/api/v1/insert-articles-request",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"insert-articles-request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createPurchaseRequest",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"articlesPurchaseRequest\":[\n      {\n         \"productId\":7,\n         \"quantity\":2\n      },\n      {\n         \"productId\":1,\n         \"quantity\":1\n      }\n   ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/purchase-request",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"purchase-request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}/api/v1/articles",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"articles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllByCategory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}/api/v1/articles?category=RouPas",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"articles"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "RouPas"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllByCategoryAndShipping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}/api/v1/articles?category=Roupas&freeShipping=0",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"articles"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "Roupas"
+						},
+						{
+							"key": "freeShipping",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllByShippingAndPrestige",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}/api/v1/articles?freeShipping=true&prestige=****",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"articles"
+					],
+					"query": [
+						{
+							"key": "freeShipping",
+							"value": "true"
+						},
+						{
+							"key": "prestige",
+							"value": "****"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllByCategoryAndShippingOrdered",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}/api/v1/articles?category=ferramentas&freeShipping=1&order=0",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"articles"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "ferramentas"
+						},
+						{
+							"key": "freeShipping",
+							"value": "1"
+						},
+						{
+							"key": "order",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
