@@ -1,6 +1,7 @@
 package com.example.challenge_spring.service;
 
 import com.example.challenge_spring.dto.ProductDto;
+import com.example.challenge_spring.exceptions.CategoryNotFoundException;
 import com.example.challenge_spring.model.Product;
 import com.example.challenge_spring.repository.ProductRepo;
 import com.example.challenge_spring.util.ProductOrder;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale.Category;
 import java.util.stream.Collectors;
 
 @Service
@@ -48,9 +50,13 @@ public class ProductService implements IProduct {
     public List<Product> getAllByCategory(String category) {
         List<Product> products = getAll();
 
-        return products.stream()
+        List<Product> filteredProducts = products.stream()
                 .filter(product -> product.getCategory().equalsIgnoreCase(category))
                 .collect(Collectors.toList());
+        if (filteredProducts.isEmpty()) {
+            throw new CategoryNotFoundException("Nenhum produto encontrado para esta categoria");
+        }
+        return filteredProducts;
     }
 
     // Método que filtra produtos por categoria e frete
