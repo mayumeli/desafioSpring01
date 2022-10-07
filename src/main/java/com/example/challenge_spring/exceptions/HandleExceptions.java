@@ -35,10 +35,10 @@ public class HandleExceptions {
         return new ResponseEntity<>(exceptionDetails, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(CategoryNotFoundException.class)
-    public ResponseEntity<ExceptionDetails> handleCategoryNotFound(CategoryNotFoundException ex) {
+    @ExceptionHandler(ProductsNotFoundException.class)
+    public ResponseEntity<ExceptionDetails> handleProductsNotFound(ProductsNotFoundException ex) {
         ExceptionDetails exceptionDetails = ExceptionDetails.builder()
-                .title("Categoria não encontrada")
+                .title("Nenhum produto encontrado")
                 .message(ex.getMessage())
                 .status(HttpStatus.NOT_FOUND.value())
                 .timeStamp(LocalDateTime.now())

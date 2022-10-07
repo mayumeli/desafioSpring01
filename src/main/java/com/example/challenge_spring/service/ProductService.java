@@ -1,7 +1,7 @@
 package com.example.challenge_spring.service;
 
 import com.example.challenge_spring.dto.ProductDto;
-import com.example.challenge_spring.exceptions.CategoryNotFoundException;
+import com.example.challenge_spring.exceptions.ProductsNotFoundException;
 import com.example.challenge_spring.model.Product;
 import com.example.challenge_spring.repository.ProductRepo;
 import com.example.challenge_spring.util.ProductOrder;
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Locale.Category;
 import java.util.stream.Collectors;
 
 @Service
@@ -54,7 +53,7 @@ public class ProductService implements IProduct {
                 .filter(product -> product.getCategory().equalsIgnoreCase(category))
                 .collect(Collectors.toList());
         if (filteredProducts.isEmpty()) {
-            throw new CategoryNotFoundException("Nenhum produto encontrado para esta categoria");
+            throw new ProductsNotFoundException("Nenhum produto encontrado para esta categoria");
         }
         return filteredProducts;
     }
@@ -63,10 +62,14 @@ public class ProductService implements IProduct {
     @Override
     public List<Product> getAllByCategoryAndShipping(String category, boolean freeShipping) {
         List<Product> productsByCategory = getAllByCategory(category);
+        
+        List<Product> filteredList = productsByCategory.stream()
+        .filter(product -> product.isFreeShipping() == freeShipping)
+        .collect(Collectors.toList());
+        
+        if(filteredList.isEmpty()) throw new ProductsNotFoundException("Nenhum produto encontrado");
 
-        return productsByCategory.stream()
-                .filter(product -> product.isFreeShipping() == freeShipping)
-                .collect(Collectors.toList());
+        return filteredList;
     }
 
     // Método que filtra produtos por frete e avaliação
