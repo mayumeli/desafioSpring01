@@ -1,5 +1,7 @@
 package com.example.challenge_spring.dto;
 
+import javax.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +12,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PurchaseItemDto {
-    private int productId;
-    private int quantity;
+
+    @NotNull
+    private Integer productId;
+
+    @NotNull
+    private Integer quantity;
 }

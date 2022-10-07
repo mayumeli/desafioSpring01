@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.challenge_spring.dto.OrderDto;
+import com.example.challenge_spring.exceptions.ProductNotFoundException;
 import com.example.challenge_spring.model.Product;
 import com.example.challenge_spring.model.Ticket;
 import com.example.challenge_spring.repository.ProductRepo;
@@ -36,13 +37,16 @@ public class OrderService implements IOrder{
         List<Product> productsRequest = new ArrayList<>();
         order.getArticlesPurchaseRequest().stream().forEach(p -> {
             Product currentProduct = mapProducts.get(p.getProductId());
+            if (currentProduct == null) {
+                throw new ProductNotFoundException("Produto não encontrado");
+            }
             currentProduct.setQuantity(p.getQuantity());
             productsRequest.add(currentProduct);
             ticket.setTotalPurchase(currentProduct.getPrice() * currentProduct.getQuantity());
         });
 
         ticket.setArticles(productsRequest);
-        ticket.setId((int)Math.random() * 100);
+        ticket.setId((int)(Math.random() * 100));
         
         return ticket;
     }

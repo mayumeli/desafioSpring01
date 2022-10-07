@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
+import javax.validation.Valid;
+
 
 @RestController
 @RequestMapping("/api/v1/")
@@ -20,7 +22,7 @@ public class ProductController {
     private IProduct service;
 
     @PostMapping("/insert-article-request")
-    public ResponseEntity<ProductDto> createProduct(@RequestBody Product product) throws IOException {
+    public ResponseEntity<ProductDto> createProduct(@Valid @RequestBody Product product) throws IOException {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.createProduct(product));
     }
 
