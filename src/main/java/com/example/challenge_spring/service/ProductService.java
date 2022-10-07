@@ -17,7 +17,8 @@ public class ProductService implements IProduct {
 
     @Autowired
     private ProductRepo repository;
-
+    
+    // Método que cadastra um produto, gerando um id a partir do tamanho da lista.
     @Override
     public ProductDto createProduct(Product product) throws IOException {
         int id = repository.getAll().size();
@@ -42,6 +43,7 @@ public class ProductService implements IProduct {
         return repository.getAll();
     }
 
+    // Método que filtra produtos por categoria
     @Override
     public List<Product> getAllByCategory(String category) {
         List<Product> products = getAll();
@@ -51,6 +53,7 @@ public class ProductService implements IProduct {
                 .collect(Collectors.toList());
     }
 
+    // Método que filtra produtos por categoria e frete
     @Override
     public List<Product> getAllByCategoryAndShipping(String category, boolean freeShipping) {
         List<Product> productsByCategory = getAllByCategory(category);
@@ -60,6 +63,7 @@ public class ProductService implements IProduct {
                 .collect(Collectors.toList());
     }
 
+    // Método que filtra produtos por frete e avaliação
     @Override
     public List<Product> getAllByShippingAndPrestige(boolean freeShipping, String prestige) {
         List<Product> products = getAll();
@@ -70,6 +74,7 @@ public class ProductService implements IProduct {
                 .collect(Collectors.toList());
     }
 
+    // Método que ordena produtos filtrados por categoria e frete
     @Override
     public List<Product> getAllByCategoryAndShippingOrdered(String category, boolean freeShipping, int order) {
         List<Product> products = getAllByCategoryAndShipping(category, freeShipping);
