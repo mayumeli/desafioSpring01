@@ -178,4 +178,31 @@
   "quantity" : 9,
   "freeShipping" : true,
   "prestige" : "***"
+}, {
+  "productId" : 21,
+  "name" : "parafuso",
+  "category" : "Ferramentas",
+  "brand" : "Black & Decker",
+  "price" : 1.0,
+  "quantity" : 7,
+  "freeShipping" : true,
+  "prestige" : "****"
+}, {
+  "productId" : 22,
+  "name" : "pia",
+  "category" : "Ferramentas",
+  "brand" : "Black & Decker",
+  "price" : 10.0,
+  "quantity" : 3,
+  "freeShipping" : true,
+  "prestige" : "****"
+}, {
+  "productId" : 23,
+  "name" : "madeira",
+  "category" : "Ferramentas",
+  "brand" : "Morumbi",
+  "price" : 2.0,
+  "quantity" : 6,
+  "freeShipping" : true,
+  "prestige" : "****"
 } ]

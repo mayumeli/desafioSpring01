@@ -14,7 +14,7 @@ public class ProductOrder {
     }
 
     private static int alphabeticalOrder(Product p1, Product p2) {
-        return p1.getName().compareTo(p2.getName());
+        return p1.getName().compareToIgnoreCase(p2.getName());
     }
 
     private static int valueOrder(Product p1, Product p2){
