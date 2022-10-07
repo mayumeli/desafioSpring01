@@ -2,6 +2,8 @@ package com.example.challenge_spring.controller;
 
 import java.io.IOException;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +23,7 @@ public class TicketController {
     @Autowired
     private IOrder service;
     @PostMapping("/purchase-request")
-    public ResponseEntity<Ticket> createProduct(@RequestBody OrderDto order) throws IOException {
+    public ResponseEntity<Ticket> createProduct(@Valid @RequestBody OrderDto order) throws IOException {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.createPurchase(order));
     }
 }
