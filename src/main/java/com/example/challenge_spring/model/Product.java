@@ -3,6 +3,8 @@ package com.example.challenge_spring.model;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
@@ -18,6 +20,8 @@ public class Product {
 
     @NotBlank
     @Size(min = 3, max = 20)
+    @Pattern(regexp = "[a-zA-Z\\s]+", message = "Permitido apenas letras")
+    // @Pattern(regexp = "[a-zA-Z0-9\\s]+", message = "Permitido apenas letras e números")
     private String name;
 
     @NotBlank
@@ -30,6 +34,7 @@ public class Product {
 
     @NotNull
     @Digits(integer = 5, fraction = 2)
+    @PositiveOrZero
     private Double price;
 
     @NotNull
